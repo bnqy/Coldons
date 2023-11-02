@@ -15,20 +15,32 @@ namespace Coldons.Lib
     {
         [Key]
         [Column(TypeName = "int")]
-        public long OrderId { get; set; }
+        public int OrderId { get; set; }
+
+
         [Key]
         [Column(TypeName = "int")]
-        public long ProductId { get; set; }
+        public int ProductId { get; set; }
+
+
         [Column(TypeName = "money")]
-        public byte[] UnitPrice { get; set; } = null!;
+        public decimal? UnitPrice { get; set; } = null!;
+
+
         [Column(TypeName = "smallint")]
-        public long Quantity { get; set; }
+        public short Quantity { get; set; }
+
+
         [Column(TypeName = "real")]
         public double Discount { get; set; }
+
 
         [ForeignKey(nameof(OrderId))]
         [InverseProperty("OrderDetails")]
         public virtual Order Order { get; set; } = null!;
+
+
+
         [ForeignKey(nameof(ProductId))]
         [InverseProperty("OrderDetails")]
         public virtual Product Product { get; set; } = null!;

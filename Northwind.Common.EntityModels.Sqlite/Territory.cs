@@ -8,12 +8,18 @@ namespace Coldons.Lib
 {
     [Keyless]
     public partial class Territory
+
     {
+        [Required]
         [Column(TypeName = "nvarchar")]
         public string TerritoryId { get; set; } = null!;
+
+        [Required]
         [Column(TypeName = "nchar")]
         public string TerritoryDescription { get; set; } = null!;
+
+
         [Column(TypeName = "int")]
-        public long RegionId { get; set; }
+        public int RegionId { get; set; }
     }
 }
