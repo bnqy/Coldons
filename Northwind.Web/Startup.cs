@@ -1,10 +1,12 @@
-﻿namespace Northwind.Web;
+﻿using Coldons.Lib;
+namespace Northwind.Web;
 
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddRazorPages();
+        services.AddNorthwindContext();
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {

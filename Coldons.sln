@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Common.EntityMode
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Common.DataContext.Sqlite", "Northwind.Common.DataContext.Sqlite\Northwind.Common.DataContext.Sqlite.csproj", "{4B81D024-4744-40DC-845F-0DCCBFD94EFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Web", "Northwind.Web\Northwind.Web.csproj", "{18E681DC-8C77-4456-B024-6C704308C8A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Web", "Northwind.Web\Northwind.Web.csproj", "{18E681DC-8C77-4456-B024-6C704308C8A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
