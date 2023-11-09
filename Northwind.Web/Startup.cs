@@ -15,7 +15,25 @@ public class Startup
             app.UseHsts();
         }
         app.UseRouting(); // start endpoint routing
-        app.UseHttpsRedirection();
+
+		app.Use(async (HttpContext context, Func<Task> next) =>
+		{
+			RouteEndpoint? rep = context.GetEndpoint() as RouteEndpoint;
+			if (rep is not null)
+			{
+				Console.WriteLine($"Endpoint name: {rep.DisplayName}");
+				Console.WriteLine($"Endpoint route pattern: {rep.RoutePattern.RawText}");
+			}
+			if (context.Request.Path == "/bonjour")
+			{
+				await context.Response.WriteAsync("Bonjour Monde!");
+				return;
+			}
+			
+			await next();
+			
+		});
+		app.UseHttpsRedirection();
 
         app.UseDefaultFiles(); // index.html, default.html, and so on
         app.UseStaticFiles();

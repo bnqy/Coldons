@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Northwind.Common.DataContext.Sqlite": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53343;http://localhost:53345"
+    }
+  }
+}
