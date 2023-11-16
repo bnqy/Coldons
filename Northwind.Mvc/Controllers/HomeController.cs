@@ -25,6 +25,7 @@ namespace Northwind.Mvc.Controllers
 			return View();
 		}
 
+		[Route("private")]
 		[Authorize(Roles = "Administrators")]
 		public IActionResult Privacy()
 		{

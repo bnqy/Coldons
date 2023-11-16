@@ -19,6 +19,7 @@ namespace Northwind.Mvc.Controllers
 			this.userManager = userManager;
 		}
 
+		[ResponseCache(Duration = 10, Location = ResponseCacheLocation.Any)]
 		public async Task<IActionResult> Index()
 		{
 			if (!(await roleManager.RoleExistsAsync(AdminRole)))
