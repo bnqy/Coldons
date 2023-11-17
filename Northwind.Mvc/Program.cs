@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Mvc.Data;
+using Coldons.Lib;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,13 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 	.AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
+
+string sqlServerConnection = builder.Configuration
+  .GetConnectionString("NorthwindConnection");
+//builder.Services.AddNorthwindContext(sqlServerConnection);
+
+// if you are using SQLite default is ..\Northwind.db
+builder.Services.AddNorthwindContext();
 
 var app = builder.Build();
 
