@@ -9,7 +9,7 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p class="alert alert-primary">@DateTime.Now.ToLongTimeString()</p>
+  <p class="alert alert-primary">@DateTime.Now.ToLongTimeString()</p>
 </div>
 
 @if (Model is not null)
@@ -105,34 +105,18 @@
             <h2>Products</h2>
  
             <div id="product-columns">
- 
                 <ul>
- 
                     @foreach (Product p in @Model.Products)
- 
                     {
-
- 
                         <li>
- 
-                            <a asp-controller="Home"
- 
-                            asp-action="ProductDetail"
- 
-                            asp-route-id="@p.ProductId">
- 
-                            @p.ProductName costs 
-
-@(p.UnitPrice is null ? "zero" : p.UnitPrice.Value.ToString("C"))
- 
-</a>
- 
-</li>
- 
-}
-
- </ul>
- </div>
- }
- </div>
+                            <a asp-controller="Home" asp-action="ProductDetail" asp-route-id="@p.ProductId">
+                                @p.ProductName costs 
+                                @(p.UnitPrice is null ? "zero" : p.UnitPrice.Value.ToString("C"))
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
 </div>
