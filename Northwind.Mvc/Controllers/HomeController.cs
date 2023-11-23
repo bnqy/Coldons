@@ -51,6 +51,15 @@ namespace Northwind.Mvc.Controllers
 			return View(model); // pass model to view and then return result
 		}
 
+		public IActionResult ModelBinding()
+		{
+			return View(); // the page with a form to submit
+		}
+		public IActionResult ModelBinding(Thing thing)
+		{
+			return View(thing); // show the model bound thing
+		}
+
 
 		[Route("private")]
 		[Authorize(Roles = "Administrators")]
