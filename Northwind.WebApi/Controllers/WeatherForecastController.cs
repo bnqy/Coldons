@@ -21,7 +21,13 @@ namespace Northwind.WebApi.Controllers
 		[HttpGet(Name = "GetWeatherForecast")]
 		public IEnumerable<WeatherForecast> Get()
 		{
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+			return Get(5);
+		}
+
+		[HttpGet("{days:int}")]
+		public IEnumerable<WeatherForecast> Get(int days)
+		{
+			return Enumerable.Range(1, days).Select(index => new WeatherForecast
 			{
 				Date = DateTime.Now.AddDays(index),
 				TemperatureC = Random.Shared.Next(-20, 55),
