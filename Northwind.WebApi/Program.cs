@@ -25,8 +25,7 @@ builder.Services.AddControllers(options =>
 				arg1: string.Join(", ", mediaFormatter.SupportedMediaTypes));
 		}
 	}
-}).AddXmlDataContractSerializerFormatters()
-.AddXmlSerializerFormatters();
+}).AddXmlDataContractSerializerFormatters().AddXmlSerializerFormatters();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
