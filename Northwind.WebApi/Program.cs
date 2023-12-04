@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Coldons.Lib; // AddNorthwindContext extension method
-
+using Northwind.WebApi.Repositories;
 using static System.Console;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +32,8 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
