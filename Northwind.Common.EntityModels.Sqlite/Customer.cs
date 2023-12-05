@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace Coldons.Lib
@@ -64,6 +65,8 @@ namespace Coldons.Lib
         public string? Fax { get; set; }
 
         [InverseProperty(nameof(Order.Customer))]
+
+        [XmlIgnore]
         public virtual ICollection<Order> Orders { get; set; }
     }
 }
