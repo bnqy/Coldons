@@ -107,7 +107,26 @@ public class CustomersController : ControllerBase
 	}
 
 	// DELETE: api/customers/[id]
-
-
-
+	[HttpDelete("{id}")]
+	[ProducesResponseType(204)]
+	[ProducesResponseType(400)]
+	[ProducesResponseType(404)]
+	public async Task<IActionResult> Delete(string id)
+	{
+		Customer? existing = await repo.RetrieveAsync(id);
+		if (existing == null)
+		{
+			return NotFound(); // 404 Resource not found
+		}
+		bool? deleted = await repo.DeleteAsync(id);
+		if (deleted.HasValue && deleted.Value) // short circuit AND
+		{
+			return new NoContentResult(); // 204 No content
+		}
+		else
+		{
+			return BadRequest( // 400 Bad request
+			$"Customer {id} was found but failed to delete.");
+		}
+	}
 }
