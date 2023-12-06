@@ -54,6 +54,8 @@ builder.Services.AddHttpLogging(options =>
 	options.ResponseBodyLogLimit = 4096; // default is 32k
 });
 
+builder.Services.AddHealthChecks().AddDbContextCheck<NorthwindContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -83,7 +85,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseHealthChecks(path: "/howdoyoufeel");
 app.MapControllers();
 
 app.Run();
