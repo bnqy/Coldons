@@ -1,11 +1,21 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Mvc.Data;
+using System.Net.Http.Headers;
 using Coldons.Lib;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient(name: "Northwind.WebApi",
+ configureClient: options =>
+ {
+	 options.BaseAddress = new Uri("https://localhost:5002/");
+	 options.DefaultRequestHeaders.Accept.Add(
+	 new MediaTypeWithQualityHeaderValue(
+	 "application/json", 1.0));
+ });
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseSqlServer(connectionString));
