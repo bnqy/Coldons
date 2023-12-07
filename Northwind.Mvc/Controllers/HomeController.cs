@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Coldons.Lib;
 using Microsoft.EntityFrameworkCore;
+using Northwind.Common;
 
 namespace Northwind.Mvc.Controllers;
 
@@ -29,12 +30,27 @@ public class HomeController : Controller
 		_logger.LogWarning("Second warning!");
 		_logger.LogInformation("I am in the Index method of the HomeController.");
 
+		try
+		{
+			HttpClient client = clientFactory.CreateClient(name: "Minimal.WebApi");
+			HttpRequestMessage request = new (method: HttpMethod.Get, requestUri: "api/weather");
+			HttpResponseMessage response = await client.SendAsync(request);
+
+			ViewData["weather"] = await response.Content.ReadFromJsonAsync<WeatherForecast[]>();
+		}
+		catch(Exception ex)
+		{
+			_logger.LogWarning($"The Minimal.WebApi service is not responding. Exception: { ex.Message}");
+			ViewData["weather"] = Enumerable.Empty<WeatherForecast>().ToArray();
+		}
+
 		HomeIndexViewModel model = new
 			(
 			VisitorCount: (new Random()).Next(1, 1001),
 			Categories: await db.Categories.ToListAsync(),
 			Products: await db.Products.ToListAsync()
 			);
+
 		return View(model);
 	}
 
