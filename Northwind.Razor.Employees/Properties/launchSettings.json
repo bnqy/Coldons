@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Northwind.Razor.Employees": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:49629;http://localhost:49630"
+    }
+  }
+}
