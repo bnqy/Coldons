@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Northwind.BlazorServer.Data;
+using Coldons.Lib; //Add Morthwind Context method extension
 
 namespace Northwind.BlazorServer
 {
@@ -11,6 +12,7 @@ namespace Northwind.BlazorServer
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
+			builder.Services.AddNorthwindContext();
 			builder.Services.AddRazorPages();
 			builder.Services.AddServerSideBlazor();
 			builder.Services.AddSingleton<WeatherForecastService>();
