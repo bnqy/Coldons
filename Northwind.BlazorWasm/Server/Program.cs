@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.ResponseCompression;
+using Coldons.Lib;
 
 namespace Northwind.BlazorWasm
 {
@@ -12,6 +13,7 @@ namespace Northwind.BlazorWasm
 
 			builder.Services.AddControllersWithViews();
 			builder.Services.AddRazorPages();
+			builder.Services.AddNorthwindContext(relativePath: Path.Combine("..", ".."));
 
 			var app = builder.Build();
 

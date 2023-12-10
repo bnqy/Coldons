@@ -1,6 +1,4 @@
-﻿<h3>CustomerDetail</h3>
-
-<EditForm Model="@Customer" OnInvalidSubmit="@OnValidSubmit">
+﻿<EditForm Model="@Customer" OnInvalidSubmit="@OnValidSubmit">
 	<DataAnnotationsValidator/>
 	<div class="form-group">
 		<div>
@@ -8,6 +6,15 @@
 			<div>
 				<InputText @bind-Value="@Customer.CustomerId" />
 				<ValidationMessage For="@(() => Customer.CustomerId)" />
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<div>
+			<label>Company Name</label>
+			<div>
+				<InputText @bind-Value="@Customer.CompanyName" />
+				<ValidationMessage For="@(() => Customer.CompanyName)" />
 			</div>
 		</div>
 	</div>
