@@ -12,6 +12,7 @@ namespace Northwind.BlazorServer
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
+			builder.Services.AddTransient<INorthwindService, NorthwindService>();
 			builder.Services.AddNorthwindContext();
 			builder.Services.AddRazorPages();
 			builder.Services.AddServerSideBlazor();
